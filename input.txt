@@ -1,0 +1,7 @@
+{ a sample program }
+program sample{
+    begin
+    9
+    end
+    for
+}
