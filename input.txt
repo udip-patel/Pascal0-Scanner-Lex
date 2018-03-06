@@ -1,7 +1,6 @@
 { a sample program }
-program sample{
+program sample
     begin
-    9
+    const 5 $
     end
     for
-}
