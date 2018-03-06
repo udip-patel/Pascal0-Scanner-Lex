@@ -1,7 +1,8 @@
 Pascal 0 scanner:
+Udip Patel (1317621)
 
-to run on linux, do the following in cmd:
+Works on moore.mcmaster.ca (not mills.mcmaster.ca -> due to gcc version-based issues)
 
-flex pascal_scanner.lex
-gcc lex.yy.c -lfl
-./a.out < input.txt
+just run the script.sh
+    -> using sh script.sh
+    -> or chmod ... ./script.sh

@@ -1,6 +1,5 @@
 { a sample program }
 program sample
     begin
-    const 5 $
+	const 5 $
     end
-    for

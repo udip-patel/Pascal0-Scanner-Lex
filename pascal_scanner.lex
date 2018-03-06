@@ -2,10 +2,11 @@
 	#include <stdio.h>
 %}
 
-WHITE_SPACE	[ \t\n]+
-COMMENTS	"{"[^}\n]*"}"
-DIGIT		[0-9]
-IDENTIFIER	[a-zA-Z_][a-zA-Z0-9]*
+WHITE_SPACE		[ \t\n]+
+COMMENTS		"{"[^}\n]*"}"
+BADCOMMENT		"{"[\n]*[^}]|[^\{]*"}"
+DIGIT			[0-9]
+IDENTIFIER		[a-zA-Z_][a-zA-Z0-9]*
 
 %%
 
@@ -52,14 +53,19 @@ program			printf("ProgramSym\n");
 {IDENTIFIER}	printf("IdentSym (value: %s)\n", yytext);
 {COMMENTS}		/* do nothing */
 {WHITE_SPACE}	/* do nothing */
+{BADCOMMENT}	{
+					printf("Error! A comment was not opened or closed properly\n");
+					yyterminate();
+				}
 .				printf("null (unrecognized character: %s)\n", yytext); /*unidentified characters */
 <<EOF>>			{
-					printf("EndOfSym\n\n");
+					printf("EofSym\n\n");
 					yyterminate();
 				}
 %%
 
-main(){
+int main(){
 	printf("\n*******PASCAL SCANNER********\n\n");
 	yylex();
+	return 0;
 }
